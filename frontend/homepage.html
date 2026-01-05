@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dashboard</title>
+        
+</head>
+
+<body>
+    <div class="section">
+        <h2 class="section-title">Work set</h2>
+        <div class="grid">
+            <button class="quiz-button" id="quiz1" onclick="GoToPage('quiz1')">Click me</button>
+            <button class="quiz-button" id="quiz2" onclick="GoToPage('quiz2')">Click me</button>
+            <button class="quiz-button" id="quiz3" onclick="GoToPage('quiz3')">Click me></button>
+            <button class="quiz-button" id="quiz4" onclick="GoToPage('quiz4')">Click me></button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Recommended quizzes</h2>
+        <div class="grid">
+            <button class="quiz-button"></button>
+            <button class="quiz-button"></button>
+            <button class="quiz-button"></button>
+            <button class="quiz-button"></button>
+        </div>
+    </div>
+
+    <script>
+        function GoToPage(pageName) {
+            window.location.href = pageName + '.html';   //once button clicked, quiz1 + .html... takes too quiz1.html
+        }
+    </script>
+</body>
+</html>
+
+
