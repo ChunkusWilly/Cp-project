@@ -6,20 +6,25 @@ eel.init('frontend')
 
 
 #-------Where Quiz Data will be handled---------#
+total_correct = 0
+
 @eel.expose
 def prepare_quiz_data():        
-    print("Hello")
-    sup = "hello"
-    return sup
+    global total_correct
+    total_correct == total_correct + 1 
+    print("Total correct answers:", total_correct)
+    return(total_correct)
     # Load questions from file
     # Save user info
-  
-    return True
+    
+
+
+
 #-----------------------------------------------#
 
 
 
 #To start the app 
-eel.start('homepage.html', size=(600, 400))
+    eel.start('homepage.html', size=(600, 400))
 #-----------------------------------------
 
