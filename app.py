@@ -2,7 +2,13 @@ import eel
 
 #Where my HTML files will be 
 eel.init('frontend')
-#--------------------------
+#------------------------------------------------#
+
+@eel.expose
+def signup():
+    return
+
+
 
 
 #-------Where Quiz Data will be handled---------#
@@ -20,15 +26,16 @@ def prepare_quiz_data(is_correct):
 
 
     correct_answer_statistic = (total_correct / total_questions) * 100
+    rounded_correct_stat = round(correct_answer_statistic, 1)
     
     print("Total correct answers:", total_correct)
     print("Total questions:", total_questions)
-    print("Percentage correct:", correct_answer_statistic)
+    print("Percentage correct:", rounded_correct_stat)
 
 
     return {
         'Total correct': total_correct,
-        'Percentage correct': correct_answer_statistic
+        'Percentage correct': rounded_correct_stat
     }
     # Load questions from file
     # Save user info
