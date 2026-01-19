@@ -37,7 +37,7 @@ async function checkAnswer() { //Will check if answer is correct!!!!
                 
                 // sends data to python 
                 try {
-                    await eel.prepare_quiz_data()();
+                    await eel.prepare_quiz_data(true)();
                     console.log('Answer saved to Python backend');
                 } catch (error) {
                     console.error('Error saving to backend:', error);
@@ -45,12 +45,18 @@ async function checkAnswer() { //Will check if answer is correct!!!!
                 // -------------------------------------------------------
 
                 // incorrect answer because if it aint correct its incorrect
-            } else {
-                resultDiv.textContent = 'Incorrect. The correct answer is Random Access Memory.';
-                resultDiv.className = 'result show incorrect';
-            }
-                //--------------------------------------------------------
-          
-        }
+                } else {
+                    resultDiv.textContent = 'Incorrect. The correct answer is Random Access Memory.';
+                    resultDiv.className = 'result show incorrect';
+                    
+                    // sends data to python as incorrect answer 
+                        try {
+                            await eel.prepare_quiz_data(false)();
+                            console.log('Answer saved to Python backend');
+                        } catch (error) {
+                            console.error('Error saving to backend:', error);
+                        }
+                    }
+                }
 
-
+// ----------------------------------------------------------------------------------------------
