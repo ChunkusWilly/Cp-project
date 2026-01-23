@@ -65,15 +65,16 @@ def prepare_quiz_data(is_correct):
 
 
     correct_answer_statistic = (total_correct / total_questions) * 100
+    correct_stat = round(correct_answer_statistic)
     
     print("Total correct answers:", total_correct)
     print("Total questions:", total_questions)
-    print("Percentage correct:", correct_answer_statistic)
+    print("Percentage correct:", correct_stat)
 
 
     return {
         'Total correct': total_correct,
-        'Percentage correct': correct_answer_statistic
+        'Percentage correct': correct_stat
     }
     # Load questions from file
     # Save user info
@@ -82,8 +83,7 @@ def prepare_quiz_data(is_correct):
 
 
 #-----------------------------------------------#
-if  __name__ == '__main__':
-    eel.start('signup.html', size=(800, 600))
+
 
 
 #To start the app 
