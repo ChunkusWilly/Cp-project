@@ -3,41 +3,79 @@
 // ----------------------------------------------------------------------------------------------
 
 async function handleSignup() {
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // send data to Python backend
-            const result = await eel.signup(username, email, password)();
-            
-            const messageDiv = document.getElementById('message');
-            messageDiv.classList.remove('hidden', 'success', 'error');
-            messageDiv.textContent = result.message;
-            
-            if (result.success) {
-                messageDiv.classList.add('success');
-                // clear form on success
-                document.getElementById('username').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('password').value = '';
-            } else {
-                messageDiv.classList.add('error');
-            }
-        }
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // Send data to Python backend
+    const result = await eel.signup(username, email, password)();
+    
+    const messageDiv = document.getElementById('message');
+    messageDiv.classList.remove('hidden', 'success', 'error');
+    messageDiv.textContent = result.message;
+    
+    if (result.success) {
+        messageDiv.classList.add('success');
+        // Clear form on success
+        document.getElementById('username').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
         
-        // Enter key shortcut for signup!!!
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                handleSignup();
-            }
-        });
-// ----------------------------------------------------------------------------------------------
+        // Redirect to login 
+        eel.navigate_to_login()
+    } else {
+        messageDiv.classList.add('error');
+    }
+}
 
+function goToLogin() {
+    eel.navigate_to_login();
+}
+
+// Enter key shortcut for signup
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        handleSignup();
+    }
+});
+// ----------------------------------------------------------------------------------------------
+// Login handling
 //-----------------------------------------------------------------------------------------------
 
+async function handleLogin() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    // Send data to Python backend
+    const result = await eel.login(username, password)();
+    
+    const messageDiv = document.getElementById('message');
+    messageDiv.classList.remove('hidden', 'success', 'error');
+    messageDiv.textContent = result.message;
+    
+    if (result.success) {
+    messageDiv.classList.add('success');
+    
+    // Redirect to homepage
+    eel.navigate_to_homepage();
+} else {
+    messageDiv.classList.add('error');
+}
+}
 
+function goToSignup() {
+    eel.navigate_to_signup();
+}
 
-
+// Enter key shortcut for login
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        handleLogin();
+    }
+});
+//----------------------------------------------------------------------------------------------
+// Quiz navigation handling
+//----------------------------------------------------------------------------------------------
 
 
 function GoToPage(pageName) {

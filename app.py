@@ -4,7 +4,7 @@ import os
 
 #Where my HTML files will be 
 eel.init('frontend')
-#-------- Sign up and Login System ---------#
+#-------- Sign up System ---------#
 
 USERS_FILE = 'users.json'
 
@@ -48,6 +48,55 @@ def save_users(users):
     with open(USERS_FILE, 'w') as f:
         json.dump(users, f, indent=2)
 
+#-------- Log in System ---------#
+
+@eel.expose
+def login(username, password):
+    try:
+        # Validation checking
+        if not username or not password:
+            return {'success': False, 'message': 'Fill in all boxes'}
+        
+        # Load existing users
+        users = load_users()
+        
+        # Check if username exists
+        if username not in users:
+            return {'success': False, 'message': 'Username not found'}
+        
+        # Check if password matches
+        if users[username]['password'] != password:
+            return {'success': False, 'message': 'Incorrect password'}
+        
+        # Login successful
+        return {
+            'success': True, 
+            'message': 'Login successful!',
+            'email': users[username]['email']
+        }
+    except Exception as e:
+        return {'success': False, 'message': str(e)}
+
+@eel.expose
+def navigate_to_signup():
+    eel.show('signup.html')
+
+@eel.expose
+def navigate_to_login():
+    eel.show('login.html')
+
+@eel.expose
+def navigate_to_homepage():
+    eel.show('homepage.html')
+
+
+
+
+
+
+
+
+
 
 
 #-------Where Quiz Data will be handled---------#
@@ -65,7 +114,8 @@ def prepare_quiz_data(is_correct):
 
 
     correct_answer_statistic = (total_correct / total_questions) * 100
-    
+    correct_answer_statistic = round(correct_answer_statistic, 1)
+
     print("Total correct answers:", total_correct)
     print("Total questions:", total_questions)
     print("Percentage correct:", correct_answer_statistic)
@@ -83,7 +133,7 @@ def prepare_quiz_data(is_correct):
 
 #-----------------------------------------------#
 if  __name__ == '__main__':
-    eel.start('signup.html', size=(800, 600))
+    eel.start('login.html', size=(800, 600))
 
 
 #To start the app 
