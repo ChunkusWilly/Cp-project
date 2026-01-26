@@ -131,12 +131,9 @@ def prepare_quiz_data(is_correct):
 
 
 
-#-----------------------------------------------#
+#-------Starting the App---------
+
 if  __name__ == '__main__':
     eel.start('login.html', size=(800, 600))
 
-
-#To start the app 
-eel.start('homepage.html', size=(600, 400))
-#-----------------------------------------
-
+#-----------------------------------------------#

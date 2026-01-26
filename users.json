@@ -1,14 +1,10 @@
 {
-  "Hep7a": {
-    "email": "Hep7ane@example.com",
-    "password": "Ilovemikufeet123"
-  },
-  "JoshGamin": {
-    "email": "JoshGamin@gmail.com",
-    "password": "JoshGamin"
-  },
   "1": {
-    "email": "Justinisaloser@gmail.com",
+    "email": "justinisaloser@gmail.com",
     "password": "1"
+  },
+  "Hep7a": {
+    "email": "Hep7a@gmail.com",
+    "password": "password"
   }
 }
