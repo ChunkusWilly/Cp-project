@@ -1,0 +1,30 @@
+{
+  "questions": [
+    {
+      "question": "What does RAM stand for?",
+      "options": ["Read Access Memory", "Random Access Memory", "Rapid Access Memory", "Run Access Memory"],
+      "correctAnswer": 1
+    },
+    {
+      "question": "What does CPU stand for?",
+      "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Unit", "Central Processor Utility"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "Which of these is a programming language?",
+      "options": ["HTML", "CSS", "Python", "HTTP"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "What does HTTP stand for?",
+      "options": ["HyperText Transfer Protocol", "High Transfer Text Protocol", "HyperText Transmission Protocol", "High Text Transfer Protocol"],
+      "correctAnswer": 0
+    },
+    {
+      "question": "is this properly working?",
+      "options": ["Yes", "No"],
+      "correctAnswer": 0
+    }
+  ]
+}
+

@@ -128,8 +128,38 @@ def prepare_quiz_data(is_correct):
     # Load questions from file
     # Save user info
     
+#-------Adding Questions to JSON file---------#
+@eel.expose
+def add_question(question, options, correct_answer):
 
-
+    try:
+        with open('quiz_data.json', 'r') as file:
+            data = json.load(file)
+        
+        new_question = {
+            "question": question,
+            "options": options,
+            "correctAnswer": correct_answer
+        }
+        
+        data['questions'].append(new_question)
+        
+        with open('quiz_data.json', 'w') as file:
+            json.dump(data, file, indent=2)
+        
+        return True
+    except Exception as e:
+        print(f"Error adding question: {e}")
+        return False
+#-------Loading Questions from JSON file---------#
+@eel.expose
+def load_questions():
+    try:
+        with open('quiz_data.json', 'r') as file:
+            data = json.load(file)
+            return data['questions']
+    except FileNotFoundError:
+        return []
 
 #-------Starting the App---------
 
