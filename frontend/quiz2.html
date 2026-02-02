@@ -12,42 +12,6 @@
     
     <div id="quiz-container"></div>
 
-    <script>
-        // Load and display questions when page loads
-        window.onload = async function() {
-            const questions = await eel.load_questions()();
-            displayQuestions(questions);
-        };
-
-        function displayQuestions(questions) {
-            const container = document.getElementById('quiz-container');
-            
-            if (questions.length === 0) {
-                container.innerHTML = '<p>No questions available.</p>';
-                return;
-            }
-
-            questions.forEach((q, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question';
-                questionDiv.innerHTML = `<h3>Question ${index + 1}: ${q.question}</h3>`;
-                
-                q.options.forEach((option, optionIndex) => {
-                    const optionLabel = document.createElement('label');
-                    optionLabel.className = 'option';
-                    optionLabel.innerHTML = `
-                        <input type="radio" name="question${index}" value="${optionIndex}">
-                        ${option}
-                    `;
-                    questionDiv.appendChild(optionLabel);
-                });
-                
-                container.appendChild(questionDiv);
-            });
-        }
-    </script>
+   <script src="quiz.js"></script>
 </body>
 </html>
-
- 
-

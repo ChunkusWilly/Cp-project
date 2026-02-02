@@ -102,16 +102,28 @@ def navigate_to_homepage():
 #-------Where Quiz Data will be handled---------#
 total_correct = 0
 total_questions = 0 
+question_statistics = {}
 
 @eel.expose
-def prepare_quiz_data(is_correct):        
-    global total_correct, total_questions
+def prepare_quiz_data(is_correct, question_index=None):        
+    global total_correct, total_questions, question_statistics
      
     total_questions = total_questions + 1
     
     if is_correct:
         total_correct = total_correct + 1
-
+    
+    # Track statistics for specific question
+    if question_index is not None:
+        if question_index not in question_statistics:
+            question_statistics[question_index] = {
+                'attempts': 0,
+                'correct': 0
+            }
+        
+        question_statistics[question_index]['attempts'] += 1
+        if is_correct:
+            question_statistics[question_index]['correct'] += 1
 
     correct_answer_statistic = (total_correct / total_questions) * 100
     correct_answer_statistic = round(correct_answer_statistic, 1)
@@ -119,7 +131,10 @@ def prepare_quiz_data(is_correct):
     print("Total correct answers:", total_correct)
     print("Total questions:", total_questions)
     print("Percentage correct:", correct_answer_statistic)
-
+    
+    # Print individual question stats if available
+    if question_index is not None:
+        print(f"Question {question_index} - Attempts: {question_statistics[question_index]['attempts']}, Correct: {question_statistics[question_index]['correct']}")
 
     return {
         'Total correct': total_correct,
@@ -127,7 +142,42 @@ def prepare_quiz_data(is_correct):
     }
     # Load questions from file
     # Save user info
+
+#-------Get statistics for a specific question---------#
+@eel.expose
+def get_question_stats(question_index):
     
+    if question_index in question_statistics:
+        stats = question_statistics[question_index]
+        percentage = (stats['correct'] / stats['attempts']) * 100 if stats['attempts'] > 0 else 0
+        return {
+            'attempts': stats['attempts'],
+            'correct': stats['correct'],
+            'percentage': round(percentage, 1)
+        }
+    return {
+        'attempts': 0,
+        'correct': 0,
+        'percentage': 0
+    }
+#----------------------------------------------------------#
+
+
+#-------Get all question statistics------------------------#
+@eel.expose
+def get_all_question_stats():
+    """Get statistics for all questions"""
+    all_stats = {}
+    for index, stats in question_statistics.items():
+        percentage = (stats['correct'] / stats['attempts']) * 100 if stats['attempts'] > 0 else 0
+        all_stats[index] = {
+            'attempts': stats['attempts'],
+            'correct': stats['correct'],
+            'percentage': round(percentage, 1)
+        }
+    return all_stats
+
+#----------------------------------------------------------#
 #-------Adding Questions to JSON file---------#
 @eel.expose
 def add_question(question, options, correct_answer):
