@@ -122,3 +122,6 @@ async function resetStats() {
     await eel.reset_statistics()();
     location.reload();
 }
+
+
+//----------------------------------------------------------------------------------------------
