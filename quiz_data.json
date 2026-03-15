@@ -1,30 +1,76 @@
 {
   "questions": [
     {
+      "type": "multiple_choice",
       "question": "What does RAM stand for?",
       "options": ["Read Access Memory", "Random Access Memory", "Rapid Access Memory", "Run Access Memory"],
       "correctAnswer": 1
     },
     {
+      "type": "multiple_choice",
       "question": "What does CPU stand for?",
       "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Unit", "Central Processor Utility"],
       "correctAnswer": 0
     },
     {
+      "type": "multiple_choice",
       "question": "Which of these is a programming language?",
       "options": ["HTML", "CSS", "Python", "HTTP"],
       "correctAnswer": 2
     },
     {
+      "type": "multiple_choice",
       "question": "What does HTTP stand for?",
       "options": ["HyperText Transfer Protocol", "High Transfer Text Protocol", "HyperText Transmission Protocol", "High Text Transfer Protocol"],
       "correctAnswer": 0
     },
     {
-      "question": "is this properly working?",
-      "options": ["Yes", "No"],
+      "type": "multiple_choice",
+      "question": "Which symbol is used for single-line comments in Python?",
+      "options": ["//", "/*", "#", "--"],
+      "correctAnswer": 2
+    },
+    {
+      "type": "multiple_choice",
+      "question": "What does 'IDE' stand for?",
+      "options": ["Integrated Development Environment", "Internal Data Editor", "Interface Design Engine", "Integrated Debug Environment"],
       "correctAnswer": 0
+    },
+    {
+      "type": "fill_blank",
+      "question": "The shortcut to undo an action on most computers is _____ + Z.",
+      "correctAnswer": "ctrl",
+      "acceptedAnswers": ["ctrl", "control", "cmd", "command"]
+    },
+    {
+      "type": "fill_blank",
+      "question": "In Python, the keyword used to define a function is _____.",
+      "correctAnswer": "def",
+      "acceptedAnswers": ["def"]
+    },
+    {
+      "type": "fill_blank",
+      "question": "HTML stands for HyperText _____ Language.",
+      "correctAnswer": "markup",
+      "acceptedAnswers": ["markup"]
+    },
+    {
+      "type": "fill_blank",
+      "question": "The file extension for a Python source file is _____.",
+      "correctAnswer": ".py",
+      "acceptedAnswers": [".py", "py"]
+    },
+    {
+      "type": "fill_blank",
+      "question": "In Python, the built-in function to display output to the console is _____.",
+      "correctAnswer": "print",
+      "acceptedAnswers": ["print", "print()"]
+    },
+    {
+      "type": "fill_blank",
+      "question": "The number base used by binary is _____.",
+      "correctAnswer": "2",
+      "acceptedAnswers": ["2", "two", "base 2", "base-2"]
     }
   ]
 }
-
